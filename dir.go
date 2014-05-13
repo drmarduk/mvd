@@ -11,7 +11,6 @@ import (
 func DirListen() {
 	var errorcountreaddir int = 0
 	for {
-		log.Printf("New Run.\n")
 		files, err := ioutil.ReadDir(InputDir)
 		if err != nil {
 			log.Printf("main.DirListen: %s\n", err.Error())
@@ -55,6 +54,11 @@ func ProcessFile(file string) {
 			return
 		}
 		log.Printf("main.ProcessFile: %s moved to %s\n", file, SaveDir+folder)
+		err = os.Remove(InputDir + file)
+		if err != nil {
+			log.Printf("main.ProcessFile: %s\n", err.Error())
+			return
+		}
 
 	} else {
 		log.Printf("main.ProcessFile: failed to create directory for %s\n", folder)

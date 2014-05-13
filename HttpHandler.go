@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	//"github.com/drmarduk/mvd/NotenSatz"
+	"github.com/drmarduk/mvd/NotenSatz"
 	"log"
 	"net/http"
-	"strconv"
+	 "strconv"
 	"strings"
 )
 
 func Root(w http.ResponseWriter, r *http.Request) {
+	log.Printf("main.Root: request incoming.")
 	fmt.Fprint(w, "emtpty request.")
 }
-/*
+
 func HttpNotenSatz(w http.ResponseWriter, r *http.Request) {
 	// /NotenSatz/$action/$params
 	path := r.URL.Path
@@ -40,4 +41,3 @@ func HttpNotenSatz(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Http Get NotenSatz: %+v", n)
 	}
 }
-*/
