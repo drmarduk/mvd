@@ -39,25 +39,25 @@ func DirListen() {
 
 func ProcessFile(file string) {
 	// get filename without extension
-	// auf_der_vogelwiese_001.pdf
-	// deutschmeister_regimentsmarsch_0004.pdf
-	name := file[:strings.Index(file, ".")]
-	log.Println(name)
-	name = name[:len(name)-5]
-	log.Println(name)
-
-	if MakeDir(name) {
-		// try "copy" file to new Dir
-		newname := SaveDir + name + "\\" + file
-		log.Printf("Copy to %s\n", newname)
+	// file = deutschmeister_regimentsmarsch_0004.pdf
+	folder := file[:strings.Index(file, ".")]
+	folder = folder[:len(folder)-5]
+	// folder = deutschmeister_regimentsmarsch
+	
+	
+	if MakeDir(folder) {
+		// try "copy" file to new Dir, via link, does not work on win
+		newname := SaveDir + folder + "/" + file
+		
 		err := os.Link(InputDir+file, newname)
 		if err != nil {
 			log.Printf("main.ProcessFile: %s\n", err.Error())
 			return
 		}
+		log.Printf("main.ProcessFile: %s moved to %s\n", file, SaveDir+folder)
 
 	} else {
-		log.Printf("main.ProcessFile: failed to create directory for %s\n", name)
+		log.Printf("main.ProcessFile: failed to create directory for %s\n", folder)
 		return
 	}
 
@@ -81,6 +81,6 @@ func MakeDir(name string) bool {
 		log.Printf("main.MakeDir: %s\n", err.Error())
 		return false
 	}
-
+	log.Printf("main.MakeDir: %s created.\n", name)
 	return true
 }

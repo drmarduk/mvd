@@ -1,8 +1,8 @@
 package main
 
 // Directory config
-var InputDir string = ".\\raw\\"
-var SaveDir string = ".\\data\\"
+var InputDir string = "./raw/"
+var SaveDir string = "./data/"
 
 // Database config
 var DbEngine string = "sqlite3"

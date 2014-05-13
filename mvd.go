@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/drmarduk/mvd/NotenSatz"
+	//"github.com/drmarduk/mvd/NotenSatz"
 	"log"
 	"net/http"
 	"time"
@@ -13,16 +13,16 @@ var quit chan struct{}
 
 func main() {
 	// Setup foo
-	if !NotenSatz.Setup() {
-		log.Printf("main.main: Failed to create sql tables.")
-	}
+	//if !NotenSatz.Setup() {
+	//	log.Printf("main.main: Failed to create sql tables.")
+	//}
 	ticker = time.NewTicker(time.Second * 3)
 	quit = make(chan struct{})
 
 	go DirListen()
 
 	http.HandleFunc("/", Root)
-	http.HandleFunc("/NotenSatz/", HttpNotenSatz)
+	//http.HandleFunc("/NotenSatz/", HttpNotenSatz)
 	http.ListenAndServe("localhost:8000", nil)
 }
 
