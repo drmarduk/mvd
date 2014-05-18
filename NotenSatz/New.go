@@ -30,15 +30,15 @@ func Setup() bool {
 	}
 	return true
 }
-func New(name string) bool {
+func New(name, dir string) bool {
 	c, err := sql.Open("sqlite3", "mvd.db")
 	if err != nil {
 		log.Printf("NotenSatz.New: %s\n", err.Error())
 		return false
 	}
 	defer c.Close()
-	query := "insert into notensatz(name) values(?)"
-	_, err = c.Exec(query, name)
+	query := "insert into notensatz(name, dir) values(?, ?)"
+	_, err = c.Exec(query, name, dir)
 	if err != nil {
 		log.Printf("NotenSatz.New: %s\n", err.Error())
 		return false

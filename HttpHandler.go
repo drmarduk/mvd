@@ -25,7 +25,7 @@ func HttpNotenSatz(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Request: %s\nAction: %s\nParams: %s\n", t, action, params)
 
 	if action == "new" {
-		r := NotenSatz.New(params)
+		r := NotenSatz.New(params, "dir")
 		log.Printf("Http New Notensatz: %t\n", r)
 	}
 	if action == "get" {
