@@ -14,6 +14,8 @@ func main() {
 		go DirListen()
 	}
 
+	for {}
+
 	if RunHttp {
 		log.Printf("Start HttpListen().\n")
 		// Setup foo
