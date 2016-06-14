@@ -8,6 +8,9 @@ import (
 	"time"
 )
 
+// Eigentlich müste man ein eigenes pkg erstellen, dass einen channel
+// annimmt, in den es die gefunden Dateien schieben kann
+
 func DirListen() {
 	var errorcountreaddir int = 0
 	for {
