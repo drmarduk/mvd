@@ -2,7 +2,7 @@ package Db
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	//_ "github.com/go-sql-driver/mysql"
 	"log"
 	"time"
 )
@@ -10,10 +10,11 @@ import (
 var (
 	c *sql.DB
 )
-type tblNoten struct{
-	Id int
-	Name string
-	dir string
+
+type tblNoten struct {
+	Id      int
+	Name    string
+	dir     string
 	Created time.Time
 }
 
@@ -24,7 +25,7 @@ func init() {
 		log.Printf("Db.init: Error while creating Connection: %s\n", err.Error())
 		return
 	}
-	log.Printf("Try to create table");
+	log.Printf("Try to create table")
 	_, err = c.Exec("create table notensatz (id integer not null primary key auto_increment);")
 	if err != nil {
 		log.Printf("Db.init: %s\n", err.Error())

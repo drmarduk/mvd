@@ -1,15 +1,14 @@
 package main
 
 import (
-	"github.com/drmarduk/mvd/NotenSatz"
-	"github.com/drmarduk/mvd/Db"
 	"log"
 	"net/http"
+
+	"github.com/drmarduk/mvd/Db"
+	"github.com/drmarduk/mvd/NotenSatz"
 )
 
 func main() {
-	log.Printf("Start.")
-
 	log.Printf("Setup Database.")
 	Db.Hi()
 	// dir foo
@@ -29,5 +28,5 @@ func main() {
 		http.HandleFunc("/NotenSatz/", HttpNotenSatz)
 		http.ListenAndServe("localhost:8000", nil)
 	}
-	
+
 }

@@ -3,7 +3,7 @@ package NotenSatz
 import (
 	"database/sql"
 	//_ "github.com/mattn/go-sqlite3" // sqlite
-	_ "github.com/go-sql-driver/mysql" // mysql
+	//_ "github.com/go-sql-driver/mysql" // mysql
 	"log"
 	"time"
 )
@@ -16,7 +16,7 @@ type NotenSatz struct {
 }
 
 func Setup() bool {
-	c, err := sql.Open(/*"sqlite3"*/"mysql", "mvd.db")
+	c, err := sql.Open( /*"sqlite3"*/ "mysql", "mvd.db")
 	if err != nil {
 		log.Printf("NotenSatz.Setup: %s\n", err.Error())
 		return false
@@ -32,7 +32,7 @@ func Setup() bool {
 	return true
 }
 func New(name, dir string) bool {
-	c, err := sql.Open(/*"sqlite3"*/"mysql", "mvd.db")
+	c, err := sql.Open( /*"sqlite3"*/ "mysql", "mvd.db")
 	if err != nil {
 		log.Printf("NotenSatz.New: %s\n", err.Error())
 		return false
@@ -48,7 +48,7 @@ func New(name, dir string) bool {
 }
 
 func Get(id int) (n NotenSatz, err error) {
-	c, err := sql.Open(/*"sqlite3"*/"mysql", "mvd.db")
+	c, err := sql.Open( /*"sqlite3"*/ "mysql", "mvd.db")
 	if err != nil {
 		log.Printf("NotenSatz.Get: %s\n", err.Error())
 		return n, err
